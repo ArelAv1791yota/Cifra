@@ -1,16 +1,16 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+List = [-5, 1, 2, 3, 4, 5, 35]
+Out = []
+Flag = False
+List.append(0)
+for i in range(len(List)-1):
+    if List[i]+1 == List[i+1]:
+        if Flag == False:
+            Out.append(f'[{List[i]}')
+        Flag = True
+    else:
+        if Flag:
+            Out.append(f'{List[i]}]')
+            Flag = False
+    if (List[i-1]+1 != List[i]) and (List[i] != List[i+1]-1):
+        Out.append(f'[{List[i]}]')
+print(Out)
