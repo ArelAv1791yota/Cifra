@@ -1,16 +1,28 @@
 List = [-5, 1, 2, 3, 4, 5, 35]
-Out = []
-Flag = False
-List.append(0)
-for i in range(len(List)-1):
-    if List[i]+1 == List[i+1]:
-        if Flag == False:
-            Out.append(f'[{List[i]}')
-        Flag = True
+
+
+def function(List):
+    Out = []
+
+    start = fin = List[0]
+    for ind in List[1:]:
+        if ind == fin + 1:
+            fin = ind
+        else:
+            Out.append((start, fin))
+            start = fin = ind
+    Out.append((start, fin))
+
+    return (Out)
+
+
+result = function(List)
+
+# Два варианта:
+print([(f"[{start} - {fin}]") if start != fin else f"[{start}]" for start, fin in result])
+
+for i in result:
+    if i[0] != i[1]:
+        print(f"[{i[0]} - {i[1]}] ", end="")
     else:
-        if Flag:
-            Out.append(f'{List[i]}]')
-            Flag = False
-    if (List[i-1]+1 != List[i]) and (List[i] != List[i+1]-1):
-        Out.append(f'[{List[i]}]')
-print(Out)
+        print(f"[{i[0]}] ", end="")
